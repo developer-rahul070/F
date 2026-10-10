@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINYA MART | Online Shopping</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<!-- MOBILE MENU BUTTON -->
+<button class="mobile-menu-btn" id="mobileMenuBtn"
+        aria-label="Open menu" aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+<!-- LOGIN POPUP -->
+<div class="modal-overlay" id="loginModal" hidden>
+    <div class="modal-box">
+        <button class="modal-close" data-close="loginModal"
+                aria-label="Close login">&times;</button>
+
+        <h2>Welcome to <span>MINYA MART</span></h2>
+        <p class="modal-subtitle">Login to your shopping account</p>
+
+        <form id="loginForm">
+            <label for="loginName">Your Name</label>
+            <input id="loginName" type="text"
+                   placeholder="Enter your name" required>
+
+            <label for="loginEmail">Email Address</label>
+            <input id="loginEmail" type="email"
+                   placeholder="Enter your email" required>
+
+            <button type="submit" class="modal-submit">
+                Login / Sign Up
+            </button>
+        </form>
+
+        <p class="demo-note">
+            Demo login only. No account will be created.
+        </p>
+        <p id="loginMessage" role="status"></p>
+    </div>
+</div>
+
+<!-- PRODUCT DETAILS POPUP -->
+<div class="modal-overlay" id="productModal" hidden>
+    <div class="modal-box product-modal-box">
+        <button class="modal-close" data-close="productModal"
+                aria-label="Close product details">&times;</button>
+
+        <img id="detailImage" src="" alt="Product preview">
+
+        <p id="detailCategory" class="product-category"></p>
+        <h2 id="detailName"></h2>
+        <p id="detailPrice" class="price"></p>
+        <p id="detailRating" class="rating"></p>
+
+        <button id="detailAddToCart" class="modal-submit">
+            Add to Cart
+        </button>
+    </div>
+</div>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <h1>MINYA<span>MART</span></h1>
+            <p>Shopping made simple ✨</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput"
+                placeholder="Search for products, brands and more...">
+            <button id="searchBtn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <div class="header-actions">
+            <button class="login-btn">
+                <i class="fa-regular fa-user"></i> Login
+            </button>
+
+            <button class="cart-btn" id="cartButton">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Cart <span id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- CATEGORY SECTION -->
+    <nav class="categories">
+        <a href="#products" data-category="All">
+            <i class="fa-solid fa-border-all"></i>
+            <span>All</span>
+        </a>
+
+        <a href="#products" data-category="Fashion">
+            <i class="fa-solid fa-shirt"></i>
+            <span>Fashion</span>
+        </a>
+
+        <a href="#products" data-category="Mobiles">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <span>Mobiles</span>
+        </a>
+
+        <a href="#products" data-category="Electronics">
+            <i class="fa-solid fa-headphones"></i>
+            <span>Electronics</span>
+        </a>
+
+        <a href="#products" data-category="Shoes">
+            <i class="fa-solid fa-shoe-prints"></i>
+            <span>Shoes</span>
+        </a>
+
+        <a href="#products" data-category="Beauty">
+            <i class="fa-solid fa-spa"></i>
+            <span>Beauty</span>
+        </a>
+
+        <a href="#products" data-category="Home">
+            <i class="fa-solid fa-couch"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="#products" data-category="Accessories">
+            <i class="fa-solid fa-glasses"></i>
+            <span>Accessories</span>
+        </a>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tag">YOUR EVERYDAY SHOPPING DESTINATION</p>
+
+            <h2>Everything You Love.<br>
+                <span>All in One Place.</span>
+            </h2>
+
+            <p>
+                Discover amazing products, explore new styles
+                and enjoy shopping at MINYA MART.
+            </p>
+
+            <a href="#products" class="shop-now">
+                Shop Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img
+                src="https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1000&q=85"
+                alt="Online shopping collection">
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="feature">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div>
+                <h3>Fast Delivery</h3>
+                <p>Delivery to your doorstep</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+                <h3>Secure Shopping</h3>
+                <p>Shop with confidence</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <i class="fa-solid fa-tags"></i>
+            <div>
+                <h3>Great Deals</h3>
+                <p>Discover exciting offers</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <i class="fa-solid fa-headset"></i>
+            <div>
+                <h3>Customer Support</h3>
+                <p>Here to help you</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SECTION -->
+    <main id="products" class="products-section">
+
+        <div class="section-heading">
+            <div>
+                <p class="section-tag">HANDPICKED FOR YOU</p>
+                <h2>Trending Products</h2>
+            </div>
+
+            <select id="sortProducts">
+                <option value="default">Sort By</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+            </select>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+
+            <!-- PRODUCT 1 -->
+            <article class="product-card" data-category="Mobiles">
+                <div class="product-image">
+                    <span class="discount">-15%</span>
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80"
+                        alt="Smartphone">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Mobiles</p>
+                    <h3>Premium Smartphone</h3>
+                    <p class="rating">★ 4.5 <span>(120 reviews)</span></p>
+                    <p class="price">₹14,999 <del>₹17,999</del></p>
+                    <button class="add-to-cart"
+                        data-name="Premium Smartphone" data-price="14999">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 2 -->
+            <article class="product-card" data-category="Fashion">
+                <div class="product-image">
+                    <span class="discount">-25%</span>
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"
+                        alt="Fashion T-shirt">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Fashion</p>
+                    <h3>Premium Cotton T-Shirt</h3>
+                    <p class="rating">★ 4.7 <span>(85 reviews)</span></p>
+                    <p class="price">₹599 <del>₹799</del></p>
+                    <button class="add-to-cart"
+                        data-name="Premium Cotton T-Shirt" data-price="599">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 3 -->
+            <article class="product-card" data-category="Electronics">
+                <div class="product-image">
+                    <span class="discount">-20%</span>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80"
+                        alt="Wireless headphones">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Electronics</p>
+                    <h3>Wireless Headphones</h3>
+                    <p class="rating">★ 4.6 <span>(96 reviews)</span></p>
+                    <p class="price">₹1,599 <del>₹1,999</del></p>
+                    <button class="add-to-cart"
+                        data-name="Wireless Headphones" data-price="1599">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 4 -->
+            <article class="product-card" data-category="Shoes">
+                <div class="product-image">
+                    <span class="discount">-30%</span>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"
+                        alt="Red sports shoes">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Shoes</p>
+                    <h3>Sporty Running Shoes</h3>
+                    <p class="rating">★ 4.4 <span>(76 reviews)</span></p>
+                    <p class="price">₹1,399 <del>₹1,999</del></p>
+                    <button class="add-to-cart"
+                        data-name="Sporty Running Shoes" data-price="1399">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 5 -->
+            <article class="product-card" data-category="Accessories">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80"
+                        alt="Wristwatch">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Accessories</p>
+                    <h3>Classic Wristwatch</h3>
+                    <p class="rating">★ 4.3 <span>(60 reviews)</span></p>
+                    <p class="price">₹899 <del>₹1,299</del></p>
+                    <button class="add-to-cart"
+                        data-name="Classic Wristwatch" data-price="899">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 6 -->
+            <article class="product-card" data-category="Home">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80"
+                        alt="Modern sofa">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Home</p>
+                    <h3>Modern Home Sofa</h3>
+                    <p class="rating">★ 4.8 <span>(42 reviews)</span></p>
+                    <p class="price">₹8,499 <del>₹10,999</del></p>
+                    <button class="add-to-cart"
+                        data-name="Modern Home Sofa" data-price="8499">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 7 -->
+            <article class="product-card" data-category="Beauty">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80"
+                        alt="Beauty skincare products">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Beauty</p>
+                    <h3>Skincare Essentials</h3>
+                    <p class="rating">★ 4.5 <span>(51 reviews)</span></p>
+                    <p class="price">₹749 <del>₹999</del></p>
+                    <button class="add-to-cart"
+                        data-name="Skincare Essentials" data-price="749">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCT 8 -->
+            <article class="product-card" data-category="Electronics">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=500&q=80"
+                        alt="Wireless earbuds">
+                    <button class="wishlist" aria-label="Add to wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Electronics</p>
+                    <h3>Wireless Earbuds</h3>
+                    <p class="rating">★ 4.4 <span>(67 reviews)</span></p>
+                    <p class="price">₹1,199 <del>₹1,599</del></p>
+                    <button class="add-to-cart"
+                        data-name="Wireless Earbuds" data-price="1199">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+        <p id="noProducts" hidden>No products found. Try another search.</p>
+    </main>
+
+    <!-- CART PANEL -->
+    <section class="cart-section" id="cartSection" hidden>
+        <div class="cart-heading">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h2>
+            <button id="closeCart" aria-label="Close cart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="cartItems">
+            <p>Your cart is empty.</p>
+        </div>
+
+        <div class="cart-total">
+            <h3>Total: <span id="cartTotal">₹0</span></h3>
+            <button id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div>
+            <h2>Join the MINYA MART Family!</h2>
+            <p>Stay updated with our latest products and offers.</p>
+        </div>
+
+        <form id="newsletterForm">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h2>MINYA<span>MART</span></h2>
+                <p>Your favorite products, all in one place.</p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#products">Shop Products</a>
+                <a href="#products">Categories</a>
+            </div>
+
+            <div>
+                <h3>Customer Service</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Returns & Refunds</a>
+            </div>
+
+            <div>
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 MINYA MART. All rights reserved.</p>
+            <p>Made with ❤️ for shoppers</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+
+</body>
+</html>
